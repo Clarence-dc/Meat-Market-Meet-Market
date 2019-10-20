@@ -7,11 +7,10 @@ public class PlayerController : MonoBehaviour
     public Rigidbody ourQuis; // the Quis has a rigid body attached
     public Transform ourPos; // the position where the Quis will appear!
     Rigidbody quisInstance; 
-
     // Start is called before the first frame update
     void Start()
     {
-        
+		
     }
 
     // Update is called once per frame
