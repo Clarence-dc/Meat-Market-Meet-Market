@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public Rigidbody ourQuis; // the Quis has a rigid body attached
+    public Transform ourPos; // the position where the Quis will appear!
+    Rigidbody quisInstance; 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,5 +30,16 @@ public class PlayerController : MonoBehaviour
 
         Debug.Log(transform.position);
 
+        if(Input.GetKeyDown(KeyCode.Q))
+        { summonQuis(); }
+
+        
+    }
+    void summonQuis()
+    {
+        ourPos = transform;
+        if (quisInstance == null)
+            quisInstance = Instantiate(ourQuis, ourPos.position, ourPos.rotation) as Rigidbody;// make Quis appear
+ 
     }
 }

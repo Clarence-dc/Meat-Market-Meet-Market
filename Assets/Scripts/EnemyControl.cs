@@ -15,7 +15,7 @@ public class EnemyControl : MonoBehaviour
     {
         GameObject PlayerObject = GameObject.Find("Player");
         Vector3 PlayerPosition = PlayerObject.transform.position;
-        transform.position= (Vector3.MoveTowards(transform.position, PlayerPosition, 4.5f * Time.deltaTime));
+        transform.position= (Vector3.MoveTowards(transform.position, PlayerPosition, 4 * Time.deltaTime));
         Debug.Log(PlayerPosition);
         Debug.Log(transform.position);
     }
