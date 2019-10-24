@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Waypoint : MonoBehaviour
+public class Looker : MonoBehaviour
 {
     private void OnDrawGizmos()
     {
