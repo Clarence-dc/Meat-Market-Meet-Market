@@ -10,8 +10,8 @@ public class Meat : MonoBehaviour
 
     private bool pickUpAllowed;
 
-    private bool canThrow;
-    private bool moving;
+   
+
 
 
     // Use this for initialization
@@ -25,10 +25,8 @@ public class Meat : MonoBehaviour
     {
         if (pickUpAllowed && Input.GetKeyDown(KeyCode.Space))
             pickUp();
-        if (canThrow && Input.GetKeyDown(KeyCode.T))
-            throwDrop();
-        if (moving)
-            transform.Translate(transform.forward * Time.deltaTime);   
+      
+        
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -42,7 +40,14 @@ public class Meat : MonoBehaviour
 
     }
 
-  
+    private void OnTriggerExit(Collider other)
+    {
+        pickUpText.gameObject.SetActive(false);
+        pickUpAllowed = false;
+
+    }
+
+
 
     private void pickUp()
     {
@@ -51,14 +56,9 @@ public class Meat : MonoBehaviour
         transform.SetParent(PlayerObject.transform);
         pickUpAllowed = false;
         pickUpText.gameObject.SetActive(false);
-        canThrow = true;
+       
     }
 
-    private void throwDrop()
-    {
-        transform.SetParent(null);
-        moving = true;
-        
-    }
-
+   
+    
 }
