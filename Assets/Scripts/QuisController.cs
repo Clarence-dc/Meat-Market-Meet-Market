@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class QuisController : MonoBehaviour
 {
-    float duration; 
+    float duration;
     // Start is called before the first frame update
     void Start()
     {
-        duration = 5f;   
+        duration = 5f;
     }
 
     // Update is called once per frame
@@ -18,6 +18,9 @@ public class QuisController : MonoBehaviour
         if (duration < 0)
         {
             Destroy(gameObject);
+        }
+        {
+
         }
     }
 }
