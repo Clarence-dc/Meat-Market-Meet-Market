@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class QuisController : MonoBehaviour
 { 
     private NavMeshAgent _agent;
-    public GameObject Enemy;
+    [SerializeField] public GameObject Enemy;
     public float EnemyDistanceRun = 145.0f;
     
 
