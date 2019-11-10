@@ -1,12 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class PlayerController : MonoBehaviour
 {
     public Rigidbody ourQuis; // the Quis has a rigid body attached
     public Transform ourPos; // the position where the Quis will appear!
-    Rigidbody quisInstance; 
+    Rigidbody quisInstance;
+    public bool HasMeat;
+
+    private Text Youwon;
+    private bool YonwonDisplayed;
+
+    
     
 
     // Start is called before the first frame update
