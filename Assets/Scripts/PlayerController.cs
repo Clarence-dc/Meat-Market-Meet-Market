@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
         else if(Input.GetKey(KeyCode.RightArrow))
         { transform.Translate(12 * Time.deltaTime, 0, 0); }
 
-        Debug.Log(transform.position);
+       
 
         if(Input.GetKeyDown(KeyCode.Q))
         { summonQuis(); }
