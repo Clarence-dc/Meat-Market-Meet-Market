@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody ourQuis; // the Quis has a rigid body attached
     public Transform ourPos; // the position where the Quis will appear!
     Rigidbody quisInstance;
+
     public bool HasMeat;
 
     public Text Youwon;
@@ -27,6 +28,11 @@ public class PlayerController : MonoBehaviour
     public bool StartBackgroundDisplayed;
 
 
+
+
+
+    public float cooldownTime = 10.0f;
+    private float nextFireTime = 0.0f;
 
 
     // Start is called before the first frame update
@@ -85,9 +91,6 @@ void Update()
         }
 
 
-        if (Input.GetKeyDown(KeyCode.Q))
-        { summonQuis(); }
-
 
         if (YouwonDisplayed)
         { youwonhehe(); }
@@ -100,6 +103,17 @@ void Update()
         { youcanstart(); }
         if (StartBackgroundDisplayed)
         { youcanstart(); }
+
+        if (Time.time > nextFireTime)
+        {
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                summonQuis();
+                print("summonQuis, cooldown started");
+                nextFireTime = Time.time + cooldownTime;
+            }
+        }
+
     }
     void summonQuis()
     {
