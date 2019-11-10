@@ -120,16 +120,20 @@ void Update()
             StartBackgroundDisplayed = false;
         }
         
-        if (collision.gameObject.name.Equals("Guard Sphere"))
+        if (collision.gameObject.name.Equals("Guard Sphere") || collision.gameObject.name.Equals("Police"))
         { 
-            Youlost.gameObject.SetActive(true);
-            YoulostDisplayed = true;
-            lostBackground.gameObject.SetActive(true);
-            lostBackgroundDisplayed = true;
-            Startyay.gameObject.SetActive(false);
-            StartDisplayed = false;
-            StartBackground.gameObject.SetActive(false);
-            StartBackgroundDisplayed = false;
+            if(Vector3.Distance(transform.position, collision.transform.position) < 3)
+            {
+                Youlost.gameObject.SetActive(true);
+                YoulostDisplayed = true;
+                lostBackground.gameObject.SetActive(true);
+                lostBackgroundDisplayed = true;
+                Startyay.gameObject.SetActive(false);
+                StartDisplayed = false;
+                StartBackground.gameObject.SetActive(false);
+                StartBackgroundDisplayed = false;
+            }
+           
 
         }
         else
