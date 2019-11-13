@@ -16,6 +16,7 @@ public class PoliceScript : MonoBehaviour
     private GameObject player;
     private Vector3 previousSighting;
 
+    private Shopper1Control routeControl;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +24,7 @@ public class PoliceScript : MonoBehaviour
         col = GetComponent<SphereCollider>();
 
         player = GameObject.Find("Player");
+        routeControl = GetComponent<Shopper1Control>();
 
     }
 
@@ -33,29 +35,34 @@ public class PoliceScript : MonoBehaviour
         if (playerInSight)
         {
             agent.SetDestination(player.transform.position);
+            routeControl.enabled = false;
+        }
+        else
+        {
+            routeControl.enabled = true;
         }
     }
     private void OnTriggerStay(Collider other)
     {
-        Debug.Log("OnTriggerStay");
+        //Debug.Log("OnTriggerStay");
         if (other.gameObject == player)
         {
             playerInSight = false;
-            Debug.Log("PlayerStay");
+            //Debug.Log("PlayerStay");
             Vector3 direction = other.transform.position - transform.position;
             float angle = Vector3.Angle(direction, transform.forward);
 
             if (angle < fieldofViewAngle * 0.5f)
 
             {
-                Debug.Log("PlayerInFieldOfView");
+                //Debug.Log("PlayerInFieldOfView");
                 RaycastHit hit;
                 if (Physics.Raycast(transform.position , direction.normalized, out hit, col.radius))
                 {
-                    Debug.Log("Hit "+hit.collider.gameObject.name);
+                    //Debug.Log("Hit "+hit.collider.gameObject.name);
                     if (hit.collider.gameObject == player)
                     {
-                        Debug.Log("PlayerSpotted");
+                        //Debug.Log("PlayerSpotted");
                         playerInSight = true;
                     }
                 }
