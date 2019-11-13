@@ -9,8 +9,8 @@ public class Meat : MonoBehaviour
     private Text pickUpText;
 
     private bool pickUpAllowed;
-
-   
+    
+    public bool HasMeat;
 
 
 
@@ -24,9 +24,10 @@ public class Meat : MonoBehaviour
     private void Update()
     {
         if (pickUpAllowed && Input.GetKeyDown(KeyCode.Space))
+        {
             pickUp();
-      
-        
+            HasMeat = true;
+        }
     }
 
     private void OnTriggerEnter(Collider collision)

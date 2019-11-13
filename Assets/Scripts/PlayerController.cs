@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public Transform ourPos; // the position where the Quis will appear!
     Rigidbody quisInstance;
 
-    public bool HasMeat;
+    
 
     public Text Youwon;
     public bool YouwonDisplayed;
