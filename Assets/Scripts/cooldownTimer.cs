@@ -13,6 +13,7 @@ public class cooldownTimer : MonoBehaviour
     void Start()
     {
         totaltime = 0;
+        cooldownTime.rectTransform.sizeDelta = new Vector2(10 * totaltime, 15);
     }
 
     // Update is called once per frame
@@ -27,7 +28,7 @@ public class cooldownTimer : MonoBehaviour
         }
         else
         {
-            timerobj.text = "0";
+            timerobj.text = "Q for Quis";
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {
