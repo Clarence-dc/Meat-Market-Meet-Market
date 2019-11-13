@@ -34,7 +34,7 @@ public class Guard : MonoBehaviour
         timeLeft = timeLeft - Time.deltaTime;
         timeLeft=Mathf.Clamp(timeLeft, 0, 3);
     }
-    private void OnTriggerEnter(Collider collision)
+    private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.GetComponent<QuisController>()!=null)
         {

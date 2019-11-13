@@ -59,6 +59,7 @@ public class PlayerController : MonoBehaviour
 void Update()
     { if (Input.GetKey(KeyCode.UpArrow))
         { transform.Translate(0, 0, 12 * Time.deltaTime);
+            transform.rotation = Quaternion.Euler(0, 0, 0);
             Startyay.gameObject.SetActive(false);
             StartDisplayed = false;
             StartBackground.gameObject.SetActive(false);
@@ -67,7 +68,8 @@ void Update()
 
 
         else if (Input.GetKey(KeyCode.DownArrow))
-        { transform.Translate(0, 0, -12 * Time.deltaTime);
+        { transform.Translate(0, 0, 12 * Time.deltaTime);
+            transform.rotation = Quaternion.Euler(0, 180, 0);
             Startyay.gameObject.SetActive(false);
             StartDisplayed = false;
             StartBackground.gameObject.SetActive(false);
@@ -75,7 +77,8 @@ void Update()
         }
 
         else if (Input.GetKey(KeyCode.LeftArrow))
-        { transform.Translate(-12 * Time.deltaTime, 0, 0);
+        { transform.Translate(0, 0, 12 * Time.deltaTime);
+            transform.rotation = Quaternion.Euler(0, 270, 0);
             Startyay.gameObject.SetActive(false);
             StartDisplayed = false;
             StartBackground.gameObject.SetActive(false);
@@ -83,7 +86,8 @@ void Update()
         }
 
         else if (Input.GetKey(KeyCode.RightArrow))
-        { transform.Translate(12 * Time.deltaTime, 0, 0);
+        { transform.Translate(0, 0, 12 * Time.deltaTime);
+            transform.rotation=Quaternion.Euler(0, 90, 0);
             Startyay.gameObject.SetActive(false);
             StartDisplayed = false;
             StartBackground.gameObject.SetActive(false);

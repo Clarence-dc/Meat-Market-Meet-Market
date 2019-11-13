@@ -17,6 +17,7 @@ public class PoliceScript : MonoBehaviour
     private Vector3 previousSighting;
 
     private Shopper1Control routeControl;
+    public float timeLeft = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +32,7 @@ public class PoliceScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        CheckPlayer();
         if (playerInSight)
         {
             agent.SetDestination(player.transform.position);
@@ -41,15 +42,26 @@ public class PoliceScript : MonoBehaviour
         {
             routeControl.enabled = true;
         }
+
+        if (timeLeft == 0)
+        {
+          
+            agent.speed = 7;
+        }
+        else
+        {
+            agent.speed = 0;
+        }
+        timeLeft = timeLeft - Time.deltaTime;
+        timeLeft = Mathf.Clamp(timeLeft, 0, 3);
     }
-    private void OnTriggerStay(Collider other)
+    private void CheckPlayer()
     {
         //Debug.Log("OnTriggerStay");
-        if (other.gameObject == player)
-        {
+        
             playerInSight = false;
             //Debug.Log("PlayerStay");
-            Vector3 direction = other.transform.position - transform.position;
+            Vector3 direction = player.transform.position - transform.position;
             float angle = Vector3.Angle(direction, transform.forward);
 
             if (angle < fieldofViewAngle * 0.5f)
@@ -67,7 +79,19 @@ public class PoliceScript : MonoBehaviour
                     }
                 }
             }
+        
+    }
+
+     void OnTriggerEnter(Collider collision)
+    {
+        Debug.Log("Crash"+collision.gameObject.name);
+        if (collision.gameObject.GetComponent<QuisController>() != null)
+        {
+            timeLeft = 3.0f;
+            Destroy(collision.gameObject);
+
         }
+
     }
 
 }
