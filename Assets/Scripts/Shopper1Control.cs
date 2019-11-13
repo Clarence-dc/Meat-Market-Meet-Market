@@ -5,7 +5,22 @@ using UnityEngine.AI;
 
 public class Shopper1Control : MonoBehaviour
 {
-    public Transform[] points;
+    public AudioSource Bang;
+    public AudioSource Bell;
+    public AudioSource GetOut;
+    public AudioSource Defeat;
+
+    public void PlayBang()
+    {
+        GetOut.Play();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        GetOut.Play();
+    }
+
+public Transform[] points;
     private int destPoint = 0;
     private NavMeshAgent agent;
 

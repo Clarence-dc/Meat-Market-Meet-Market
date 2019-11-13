@@ -11,7 +11,7 @@ public class AudioController : MonoBehaviour
 
     public void PlayBang()
     {
-        Bang.Play();
+        Bell.Play();
     }
 
     private void OnTriggerEnter(Collider other)

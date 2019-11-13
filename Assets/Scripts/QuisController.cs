@@ -4,7 +4,22 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class QuisController : MonoBehaviour
-{ 
+{
+    public AudioSource Bang;
+    public AudioSource Bell;
+    public AudioSource GetOut;
+    public AudioSource Defeat;
+
+    public void PlayBang()
+    {
+        Bang.Play();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Bang.Play();
+    }
+
     private NavMeshAgent _agent;
     [SerializeField] public GameObject Enemy;
     public float EnemyDistanceRun = 145.0f;

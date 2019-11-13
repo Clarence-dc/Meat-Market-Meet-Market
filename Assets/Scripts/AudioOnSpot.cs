@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class AudioOnSpot : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public AudioSource Bang;
+    public AudioSource Bell;
+    public AudioSource GetOut;
+    public AudioSource Defeat;
+
+    public void PlayBang()
     {
-        
+        Bang.Play();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnCollisionEnter(Collision collision)
     {
-        
+        Bang.Play();
     }
 }
