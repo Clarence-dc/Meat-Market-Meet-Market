@@ -16,6 +16,8 @@ public class PoliceScript : MonoBehaviour
     private GameObject player;
     private Vector3 previousSighting;
 
+    private Shopper1Control routeControl;
+    public float timeLeft = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,44 +25,73 @@ public class PoliceScript : MonoBehaviour
         col = GetComponent<SphereCollider>();
 
         player = GameObject.Find("Player");
+        routeControl = GetComponent<Shopper1Control>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        CheckPlayer();
         if (playerInSight)
         {
             agent.SetDestination(player.transform.position);
+            routeControl.enabled = false;
         }
-    }
-    private void OnTriggerStay(Collider other)
-    {
-        Debug.Log("OnTriggerStay");
-        if (other.gameObject == player)
+        else
         {
+            routeControl.enabled = true;
+        }
+
+        if (timeLeft == 0)
+        {
+          
+            agent.speed = 7;
+        }
+        else
+        {
+            agent.speed = 0;
+        }
+        timeLeft = timeLeft - Time.deltaTime;
+        timeLeft = Mathf.Clamp(timeLeft, 0, 3);
+    }
+    private void CheckPlayer()
+    {
+        //Debug.Log("OnTriggerStay");
+        
             playerInSight = false;
-            Debug.Log("PlayerStay");
-            Vector3 direction = other.transform.position - transform.position;
+            //Debug.Log("PlayerStay");
+            Vector3 direction = player.transform.position - transform.position;
             float angle = Vector3.Angle(direction, transform.forward);
 
             if (angle < fieldofViewAngle * 0.5f)
 
             {
-                Debug.Log("PlayerInFieldOfView");
+                //Debug.Log("PlayerInFieldOfView");
                 RaycastHit hit;
                 if (Physics.Raycast(transform.position , direction.normalized, out hit, col.radius))
                 {
-                    Debug.Log("Hit "+hit.collider.gameObject.name);
+                    //Debug.Log("Hit "+hit.collider.gameObject.name);
                     if (hit.collider.gameObject == player)
                     {
-                        Debug.Log("PlayerSpotted");
+                        //Debug.Log("PlayerSpotted");
                         playerInSight = true;
                     }
                 }
             }
+        
+    }
+
+     void OnTriggerEnter(Collider collision)
+    {
+        Debug.Log("Crash"+collision.gameObject.name);
+        if (collision.gameObject.GetComponent<QuisController>() != null)
+        {
+            timeLeft = 3.0f;
+            Destroy(collision.gameObject);
+
         }
+
     }
 
 }

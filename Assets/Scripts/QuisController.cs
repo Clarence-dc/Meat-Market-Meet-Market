@@ -23,7 +23,7 @@ public class QuisController : MonoBehaviour
     {
         Enemy = GameObject.Find("Guard Sphere");
         float distance = Vector3.Distance(transform.position, Enemy.transform.position);
-        Debug.Log("Distance: " + distance);
+        //Debug.Log("Distance: " + distance);
 
         // Run away from enemy
         if (distance < EnemyDistanceRun)
