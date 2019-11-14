@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
     public float cooldownTime = 10.0f;
     private float nextFireTime = 0.0f;
 
-
+    public bool hasMeat = false;
     // Start is called before the first frame update
 
     private void Start()
@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
 // Update is called once per frame
 void Update()
     { if (Input.GetKey(KeyCode.UpArrow))
-        { transform.Translate(0, 0, 12 * Time.deltaTime);
+        { transform.Translate(0, 0, 6 * Time.deltaTime);
             transform.rotation = Quaternion.Euler(0, 0, 0);
             Startyay.gameObject.SetActive(false);
             StartDisplayed = false;
@@ -68,7 +68,7 @@ void Update()
 
 
         else if (Input.GetKey(KeyCode.DownArrow))
-        { transform.Translate(0, 0, 12 * Time.deltaTime);
+        { transform.Translate(0, 0, 6 * Time.deltaTime);
             transform.rotation = Quaternion.Euler(0, 180, 0);
             Startyay.gameObject.SetActive(false);
             StartDisplayed = false;
@@ -77,7 +77,7 @@ void Update()
         }
 
         else if (Input.GetKey(KeyCode.LeftArrow))
-        { transform.Translate(0, 0, 12 * Time.deltaTime);
+        { transform.Translate(0, 0, 6 * Time.deltaTime);
             transform.rotation = Quaternion.Euler(0, 270, 0);
             Startyay.gameObject.SetActive(false);
             StartDisplayed = false;
@@ -86,7 +86,7 @@ void Update()
         }
 
         else if (Input.GetKey(KeyCode.RightArrow))
-        { transform.Translate(0, 0, 12 * Time.deltaTime);
+        { transform.Translate(0, 0, 6 * Time.deltaTime);
             transform.rotation=Quaternion.Euler(0, 90, 0);
             Startyay.gameObject.SetActive(false);
             StartDisplayed = false;
@@ -130,7 +130,7 @@ void Update()
    
     void OnTriggerEnter(Collider collision)
         {
-        if (collision.gameObject.name.Equals("winningSpace"))
+        if (collision.gameObject.name.Equals("winningSpace") && hasMeat == true)
         {
             Youwon.gameObject.SetActive(true);
             YouwonDisplayed = true;
@@ -138,7 +138,7 @@ void Update()
             StartBackgroundDisplayed = false;
         }
         
-        if (collision.gameObject.name.Equals("Guard Sphere") || collision.gameObject.name.Equals("Police"))
+        if (collision.gameObject.name.Equals("Guard Sphere") && hasMeat == true)
         { 
             if(Vector3.Distance(transform.position, collision.transform.position) < 3)
             {
