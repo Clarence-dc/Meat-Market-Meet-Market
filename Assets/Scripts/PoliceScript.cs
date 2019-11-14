@@ -71,11 +71,14 @@ public class PoliceScript : MonoBehaviour
                 RaycastHit hit;
                 if (Physics.Raycast(transform.position , direction.normalized, out hit, col.radius))
                 {
-                    //Debug.Log("Hit "+hit.collider.gameObject.name);
+                //Debug.Log("Hit "+hit.collider.gameObject.name);
                     if (hit.collider.gameObject == player)
                     {
                         //Debug.Log("PlayerSpotted");
-                        playerInSight = true;
+                        if (player.GetComponent<PlayerController>().hasMeat == true)
+                        {
+                            playerInSight = true;
+                        }
                     }
                 }
             }

@@ -9,9 +9,6 @@ public class Meat : MonoBehaviour
     private Text pickUpText;
 
     private bool pickUpAllowed;
-    
-    public bool HasMeat;
-
 
 
     // Use this for initialization
@@ -26,7 +23,6 @@ public class Meat : MonoBehaviour
         if (pickUpAllowed && Input.GetKeyDown(KeyCode.Space))
         {
             pickUp();
-            HasMeat = true;
         }
     }
 
@@ -55,6 +51,7 @@ public class Meat : MonoBehaviour
         Debug.Log("I'm being picked up");
         GameObject PlayerObject = GameObject.Find("Player");
         transform.SetParent(PlayerObject.transform);
+        PlayerObject.GetComponent<PlayerController>().hasMeat = true;
         pickUpAllowed = false;
         pickUpText.gameObject.SetActive(false);
        

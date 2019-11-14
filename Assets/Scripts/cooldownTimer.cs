@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class cooldownTimer : MonoBehaviour
+
+public class CooldownTimer : MonoBehaviour
 
 {
     public Image cooldownTime;
