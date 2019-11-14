@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class PoliceScript : MonoBehaviour
 {
-    public float fieldofViewAngle = 110f;
+    public float fieldofViewAngle = 180f;
     public bool playerInSight;
     public Vector3 personalLastSighting;
 
