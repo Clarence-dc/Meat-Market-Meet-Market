@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class PoliceScript : MonoBehaviour
 {
-    public float fieldofViewAngle = 110f;
+    public float fieldofViewAngle = 180f;
     public bool playerInSight;
     public Vector3 personalLastSighting;
 
@@ -18,6 +18,10 @@ public class PoliceScript : MonoBehaviour
 
     private Shopper1Control routeControl;
     public float timeLeft = 0;
+    public GameObject AlertCircle;
+    public Material HiddenMat;
+    public Material SeenMat;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,10 +41,12 @@ public class PoliceScript : MonoBehaviour
         {
             agent.SetDestination(player.transform.position);
             routeControl.enabled = false;
+            AlertCircle.GetComponent<Renderer>().material = SeenMat;
         }
         else
         {
             routeControl.enabled = true;
+            AlertCircle.GetComponent<Renderer>().material = HiddenMat;
         }
 
         if (timeLeft == 0)

@@ -54,6 +54,7 @@ public class Meat : MonoBehaviour
         PlayerObject.GetComponent<PlayerController>().hasMeat = true;
         pickUpAllowed = false;
         pickUpText.gameObject.SetActive(false);
+        GetComponent<Collider>().enabled = false;
        
     }
 
