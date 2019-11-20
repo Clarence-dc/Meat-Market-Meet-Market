@@ -8,6 +8,11 @@ public class Meat : MonoBehaviour
     [SerializeField]
     private Text pickUpText;
 
+    public AudioSource Bang;
+    public AudioSource Bell;
+    public AudioSource GetOut;
+    public AudioSource Defeat;
+
     private bool pickUpAllowed;
 
 
@@ -36,7 +41,10 @@ public class Meat : MonoBehaviour
         }
 
     }
-
+    public void PlayBang()
+    {
+        Bang.Play();
+    }
     private void OnTriggerExit(Collider other)
     {
         pickUpText.gameObject.SetActive(false);
@@ -55,8 +63,9 @@ public class Meat : MonoBehaviour
         pickUpAllowed = false;
         pickUpText.gameObject.SetActive(false);
         GetComponent<Collider>().enabled = false;
-       
-    }
+        Bang.Play();
+
+}
 
    
     
