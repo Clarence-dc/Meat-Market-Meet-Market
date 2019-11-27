@@ -28,7 +28,14 @@ public class PlayerController : MonoBehaviour
     public bool StartBackgroundDisplayed;
 
 
+    public AudioSource Bang;
+    public AudioSource Bell;
+    public AudioSource GetOut;
+    public AudioSource Defeat;
 
+ 
+
+   
 
 
     public float cooldownTime = 10.0f;
@@ -127,7 +134,11 @@ void Update()
 
     }
 
-   
+    public void PlayBang()
+    {
+        Bang.Play();
+    }
+
     void OnTriggerEnter(Collider collision)
         {
         if (collision.gameObject.name.Equals("winningSpace") && hasMeat == true)
@@ -139,8 +150,9 @@ void Update()
         }
         
         if (collision.gameObject.name.Equals("Guard Sphere") && hasMeat == true)
-        { 
-            if(Vector3.Distance(transform.position, collision.transform.position) < 3)
+        {
+            
+            if (Vector3.Distance(transform.position, collision.transform.position) < 3)
             {
                 Youlost.gameObject.SetActive(true);
                 YoulostDisplayed = true;
@@ -150,9 +162,9 @@ void Update()
                 StartDisplayed = false;
                 StartBackground.gameObject.SetActive(false);
                 StartBackgroundDisplayed = false;
+                Bang.Play();
             }
-           
-
+            
         }
         else
         {
